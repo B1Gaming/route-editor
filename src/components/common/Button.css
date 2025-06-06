@@ -1,0 +1,33 @@
+.Button {
+  border: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.25rem;
+  align-items: center;
+  background-color: var(--element-background);
+  color: var(--element-text);
+  transition-duration: 100ms;
+  transition-property: background-color, color, box-shadow;
+  gap: 0.25em;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  /*box-shadow: 0.125em 0.125em inset #fff4, -0.125em -0.125em inset #0002;*/
+}
+
+.Button.outlined {
+  background-color: transparent;
+  color: var(--element-background);
+  box-shadow: 0 0 0 0.25rem inset var(--element-background);
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+  opacity: 50%;
+}
+
+.Button.reversed {
+  flex-direction: row-reverse;
+}

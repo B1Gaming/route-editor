@@ -1,0 +1,55 @@
+.Icon {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.5rem; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  height: max-content;
+  width: max-content;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.Icon.small {
+  font-size: 0.75rem;
+}
+
+.Icon.medium {
+  font-size: 1.25rem;
+}
+
+.Icon.large {
+  font-size: 2rem;
+}
+
+.Icon.pointable {
+  transition-property: opacity;
+  transition-duration: 100ms;
+  cursor: pointer;
+}
+
+.Icon.pointable:hover {
+  opacity: 0.7;
+}
+
+.Icon.pointable:active {
+  opacity: 0.5;
+}

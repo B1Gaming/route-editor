@@ -1,0 +1,55 @@
+.InfoModal {
+  padding: 0;
+  width: calc(max(16em, 75vw) + 2em);
+  height: calc(75vh + 2em);
+  overflow-y: hidden;
+  display: grid;
+  grid-template-rows: repeat(2, max-content) 1fr;
+}
+
+.InfoModal i {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.InfoModal .tab-list {
+  display: flex;
+  justify-content: center;
+}
+
+.InfoModal .tab-list > button {
+  flex-grow: 1;
+  text-align: center;
+  box-shadow: none;
+  border-bottom: 0.125em solid var(--element-background);
+  border-radius: 0;
+  text-transform: capitalize;
+  justify-content: center;
+  transition: 100ms;
+}
+
+.InfoModal li, .InfoModal p {
+  line-height: 1.5;
+}
+
+.InfoModal li li {
+  line-height: 2;
+}
+
+.InfoModal .tab-list > button:not(:first-child) {
+  border-left: 0.0625em solid var(--element-background);
+}
+
+.InfoModal .tab-list > button:not(:last-child) {
+  border-right: 0.0625em solid var(--element-background);
+}
+
+.InfoModal .content {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.InfoModal .content h1 {
+  margin-top: 0;
+}

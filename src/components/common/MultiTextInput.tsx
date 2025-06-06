@@ -1,0 +1,60 @@
+import '@components/common/MultiTextInput.css';
+
+import { type FC, useState } from 'react';
+
+import Button from '@components/common/Button';
+import Icon from '@components/common/Icon';
+
+interface MultiTextInputProps {
+  setParentValue: (values: string[]) => void;
+  values: string[];
+  verifyMethod?: (value: string) => boolean;
+}
+
+const MultiTextInput: FC<MultiTextInputProps> = ({ setParentValue, values, verifyMethod }) => {
+  const [value, setValue] = useState('');
+  const valuesCopy = [...values];
+
+  const handleUpdateValue = () => {
+    if ((verifyMethod == undefined || verifyMethod(value)) && !valuesCopy.includes(value)) {
+      valuesCopy.push(value);
+      setParentValue(valuesCopy.sort());
+      setValue('');
+    }
+  };
+
+  return <div className={'MultiTextInput'}>
+    <div className={'item-list'}>
+      {values.map((value, index) => (
+        <Button
+          className={'item'}
+          color={'secondary'}
+          key={`${value}_${index}`}
+          onClick={() => {
+            valuesCopy.splice(index, 1);
+            setParentValue(valuesCopy);
+          }}
+        >
+          {value}
+        </Button>
+      ))}
+    </div>
+    <div className={'add-item-row'}>
+      <input
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleUpdateValue();
+          }
+        }}
+        type="text"
+        value={value}
+      />
+      <Button className={'add-item-button'} disabled={value === ''} onClick={handleUpdateValue}>
+        <Icon type={'add'}/>
+      </Button>
+    </div>
+  </div>;
+};
+
+export default MultiTextInput;

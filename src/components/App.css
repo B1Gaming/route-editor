@@ -1,0 +1,163 @@
+:root {
+  --color-background: white;
+  --color-text: white;
+  --color-text-inverted: black;
+  --color-primary: #0a8ef2;
+  --color-primary-hover: #2fa0f7;
+  --color-primary-active: #5ab2f5;
+  --color-secondary: #5f5f5f;
+  --color-secondary-hover: #676767;
+  --color-secondary-active: #7f7f7f;
+  --color-error: #f00a0a;
+  --color-error-hover: #f83030;
+  --color-error-active: #f14856;
+  --color-warn: #f0ba0a;
+  --color-warn-hover: #f8c930;
+  --color-warn-active: #f5de5b;
+  --color-success: #0cbe0c;
+  --color-success-hover: #25d33c;
+  --color-success-active: #38f132;
+  --color-a: #00e;
+  --color-a-visited: #551a8b;
+
+  /*
+  * Only these colors should ever be used in components
+  */
+  --window-background: var(--color-background);
+  --element-background: var(--color-primary);
+  --element-text: var(--color-text);
+  --element-text-inverted: var(--color-text-inverted);
+  --element-border: var(--color-primary);
+}
+
+body {
+  margin: 0;
+  background-color: var(--window-background);
+  color: var(--element-text-inverted);
+  overflow: hidden;
+  font-family: 'Roboto', serif;
+}
+
+button {
+  color: var(--element-text-inverted);
+}
+
+a {
+  color: var(--color-a);
+}
+
+a:visited {
+  color: var(--color-a-visited);
+}
+
+input {
+  color: inherit;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  border: 1px solid #7f7f7f;
+  font-size: 1rem;
+}
+
+code {
+  padding: 0.25em;
+  border-radius: 0.5em;
+  border: 1px solid #7f7f7f;
+  background-color: #7f7f7f3f;
+}
+
+hr {
+  border-color: #7f7f7fbf;
+  border-style: solid;
+}
+
+.App.dark {
+  --window-background: #1c1d1e;
+  --element-text-inverted: white;
+  --color-a: #07f;
+  --color-a-visited: #b7f;
+}
+
+.App {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  background-color: var(--window-background);
+  color: var(--element-text-inverted);
+}
+
+.loading-cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--window-background);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
+  --element-background: var(--color-primary);
+  --element-border: var(--color-primary);
+}
+
+.primary:hover:not(:disabled) {
+  --element-background: var(--color-primary-hover);
+}
+
+.primary:active:not(:disabled) {
+  --element-background: var(--color-primary-active);
+}
+
+.secondary {
+  --element-background: var(--color-secondary);
+  --element-border: var(--color-secondary);
+}
+
+.secondary:hover:not(:disabled) {
+  --element-background: var(--color-secondary-hover);
+}
+
+.secondary:active:not(:disabled) {
+  --element-background: var(--color-secondary-active);
+}
+
+.error {
+  --element-background: var(--color-error);
+  --element-border: var(--color-error);
+}
+
+.error:hover:not(:disabled) {
+  --element-background: var(--color-error-hover);
+}
+
+.error:active:not(:disabled) {
+  --element-background: var(--color-error-active);
+}
+
+.warn {
+  --element-background: var(--color-warn);
+  --element-border: var(--color-warn);
+}
+
+.warn:hover:not(:disabled) {
+  --element-background: var(--color-warn-hover);
+}
+
+.warn:active:not(:disabled) {
+  --element-background: var(--color-warn-active);
+}
+
+.success {
+  --element-background: var(--color-success);
+  --element-border: var(--color-success);
+}
+
+.success:hover:not(:disabled) {
+  --element-background: var(--color-success-hover);
+}
+
+.success:active:not(:disabled) {
+  --element-background: var(--color-success-active);
+}

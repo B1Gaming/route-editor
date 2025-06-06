@@ -1,0 +1,6 @@
+.Label {
+  display: grid;
+  align-items: center;
+  gap: 0.125em;
+  margin: 0.5em 0;
+}

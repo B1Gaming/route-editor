@@ -1,0 +1,72 @@
+.Select {
+  position: relative;
+  min-height: 1.5em;
+  border: 1px solid #7f7f7f;
+  background-color: #7f7f7f0f;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 0.25em;
+  outline: none;
+  width: 21rem;
+}
+
+.Select.multi {
+  min-height: 3.55rem;
+}
+
+.Select:focus {
+  border-color: var(--element-background);
+}
+
+.Select .item-list {
+  flex-grow: 1;
+  padding: 0.375em;
+  max-width: 18em;
+}
+
+.Select i {
+  padding: 0.125em;
+  border-left: 1px solid #7f7f7f;
+}
+
+.Select .item-list > .item {
+  display: inline;
+  margin: 0.25em;
+  padding: 0.375em;
+  font-size: 1rem;
+}
+
+.options {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  max-height: 15em;
+  overflow-y: auto;
+  border: 1px solid #7f7f7f;
+  border-radius: 0.25em;
+  width: 100%;
+  left: 0;
+  top: calc(100% + 0.25em);
+  background-color: var(--window-background);
+  z-index: 1;
+}
+
+.options.shown {
+  display: block;
+}
+
+.option {
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: var(--element-background);
+  color: var(--element-text);
+}
+
+.option.selected:not(:hover) {
+  background-color: #7f7f7f1f;
+}

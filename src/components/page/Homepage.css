@@ -1,0 +1,121 @@
+.Homepage {
+  display: grid;
+  padding: 2em;
+  justify-content: center;
+  justify-items: center;
+}
+
+.homepage-content {
+  width: min(40em, 75vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Homepage .header {
+  display: grid;
+  align-items: start;
+  grid-template-rows: repeat(2, max-content);
+  text-align: center;
+}
+
+.Homepage .alternative-actions {
+  text-align: center;
+  width: max-content;
+  display: grid;
+  align-items: center;
+  grid-template-rows: repeat(2, max-content);
+  grid-template-columns: repeat(3, max-content);
+}
+
+.alternatives-text {
+  grid-area: 1 / 1 / 2 / 4;
+}
+
+.or-text {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.alternative-actions button {
+  margin: 0 1em;
+}
+
+.upload-dialog {
+  --upload-color: #f2687f3f;
+  background-color: var(--upload-color);
+  box-shadow: 0 0 0 0.125rem inset var(--upload-color);
+  border-radius: 2rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  width: 100%;
+  transition-duration: 100ms;
+  transition-property: background-color, box-shadow;
+  aspect-ratio: 21 / 9;
+}
+
+.upload-dialog:hover,
+.upload-dialog.on-drag {
+  --upload-color: #f2687f4f;
+  cursor: pointer;
+}
+
+.title-logo {
+  width: min(40em, 75vw);
+  justify-self: center;
+}
+
+.dark .title-logo {
+  filter: drop-shadow(-0 0 0.5rem #ffffff3f);
+}
+
+.upload-dialog {
+  position: relative;
+}
+
+.upload-dialog #file-upload {
+  position: absolute;
+  display: none;
+}
+
+.settings-modal {
+  display: grid;
+  grid-template-rows: repeat(2, max-content) 1fr max-content;
+  width: max(16em, 75vw);
+  height: 75vh;
+}
+
+.settings-body {
+  padding: 1em 0;
+}
+
+.settings-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings-button {
+  right: 1em;
+}
+
+.page-info-button {
+  left: 1em;
+}
+
+.page-info-button,
+.settings-button {
+  position: absolute;
+  bottom: 1em;
+  font-size: 1.5rem;
+  padding: 0.25em;
+}
+
+@media screen and (max-width: 50em) {
+  .Homepage .alternative-actions {
+    display: flex;
+    flex-direction: column;
+  }
+}

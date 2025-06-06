@@ -1,0 +1,52 @@
+.MultiTextInput {
+  border: 1px solid #7f7f7f;
+  background-color: #7f7f7f0f;
+  padding: 0.5rem;
+  border-radius: 0.25em;
+  width: 20rem;
+}
+
+.MultiTextInput .item-list {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid #7f7f7f;
+  margin-bottom: 0.25em;
+}
+
+.MultiTextInput .item-list > .item {
+  display: inline;
+  margin: 0.25em;
+  padding: 0.375em;
+  font-size: 1rem;
+}
+
+.MultiTextInput input {
+  border: none;
+  outline: none;
+  padding: 0.25em;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.MultiTextInput .add-item-row {
+  width: 100%;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.MultiTextInput .add-item-button {
+  height: max-content;
+  width: max-content;
+  font-size: 1.5rem;
+  padding: 0.125rem;
+  border-radius: 0.375em;
+}
+
+.MultiTextInput .add-item-row i {
+  font-size: inherit;
+}
+
+.MultiTextInput:focus-within,
+.MultiTextInput:focus-within .item-list {
+  border-color: var(--element-background);
+}

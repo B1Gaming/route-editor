@@ -1,4 +1,4 @@
-import '@components/page/Homepage.css';
+import '@components/view/Homepage.css';
 
 import clsx from 'clsx';
 import {type ChangeEvent, type DragEvent, type FC, useState} from 'react';
@@ -16,13 +16,13 @@ const Homepage: FC = () => {
   document.title = 'NSMBW Route Editor (Homepage)';
   const {
     setCsvString,
-    setPage,
     setPoints,
     setRoutes,
     setSettings,
     setSettingsOpen,
     settings,
-    settingsOpen
+    settingsOpen,
+    setView
   } = useBase();
 
   const [uploadError, setUploadError] = useState(false);
@@ -41,11 +41,11 @@ const Homepage: FC = () => {
 
             if (tempCsvString.split('\r\n')[0].split(',').length >= 7) {
               const points = makePoints(tempCsvString);
-              setPage('point');
+              setView('point');
               setPoints(points);
             } else if (tempCsvString.split('\n')[0].split(',').length === 3) {
               const routes = makeRoutes(tempCsvString);
-              setPage('route');
+              setView('route');
               setRoutes(routes);
             }
             setCsvString(tempCsvString);
@@ -66,7 +66,6 @@ const Homepage: FC = () => {
 
   const handleDragAndDrop = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
-    console.log('test');
     if (e.dataTransfer.items) {
       [...e.dataTransfer.items].forEach((item) => {
         if (item.kind === 'file' && item.getAsFile() != null) {
@@ -83,8 +82,8 @@ const Homepage: FC = () => {
     }
   };
 
-  const switchPage = (pageName: Pages) => {
-    setPage(pageName);
+  const switchView = (viewName: Views) => {
+    setView(viewName);
   };
 
   const updateSettings = (data: Settings) => {
@@ -149,12 +148,12 @@ const Homepage: FC = () => {
       <div className={'alternative-actions'}>
         <p className={'alternatives-text'}>or open a new</p>
         <Button icon={'location_on'}
-                onClick={() => switchPage('point')}>
+                onClick={() => switchView('point')}>
           Point Editor
         </Button>
         <p className={'or-text'}>or</p>
         <Button icon={'polyline'}
-                onClick={() => switchPage('route')}>
+                onClick={() => switchView('route')}>
           Route Editor
         </Button>
       </div>

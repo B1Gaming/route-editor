@@ -7,7 +7,7 @@ const useBase = () => {
   if (!context) {
     throw new Error('useBase must be used within BaseProvider');
   }
-  console.log(context);
+  // console.log(context);
 
   return context;
 };

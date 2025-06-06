@@ -3,16 +3,16 @@ import '@components/App.css';
 import clsx from 'clsx';
 import {type FC} from 'react';
 
-import Homepage from '@components/page/Homepage';
-import PointEditor from '@components/page/PointEditor';
-import RouteEditor from '@components/page/RouteEditor';
+import Homepage from '@components/view/Homepage';
+import PointEditor from '@components/view/PointEditor';
+import RouteEditor from '@components/view/RouteEditor';
 import useBase from '@context/base/useBase.ts';
 
 const App: FC = () => {
-  const {page, settings} = useBase();
+  const {settings, view} = useBase();
 
   let contentWindow = null;
-  switch (page) {
+  switch (view) {
     case 'home': {
       contentWindow = <Homepage/>;
       break;

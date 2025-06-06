@@ -6,8 +6,6 @@ interface GenericProviderProps {
   children: ReactNode;
 }
 
-type Pages = 'home' | 'point' | 'route';
-
 interface PointVerificationOptions {
   flagBone?: boolean;
   kBone?: boolean;
@@ -46,3 +44,5 @@ interface Verifiable {
 
   name: string;
 }
+
+type Views = 'home' | 'point' | 'route';

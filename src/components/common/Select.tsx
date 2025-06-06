@@ -29,8 +29,6 @@ const Select: FC<SelectProps> = ({ multi, onChange, options, value }) => {
     multi ? value.map((v) => v.value).includes(option.value) : option.value === value.value;
 
   const selectOption = (option: SelectOption) => {
-    console.log(option, value);
-
     if (multi) {
       if (value.map((v) => v.value).includes(option.value)) {
         onChange(value.filter((o) => o.value !== option.value));

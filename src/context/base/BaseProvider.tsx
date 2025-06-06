@@ -26,7 +26,7 @@ const BaseProvider: FC<GenericProviderProps> = ({ children }) => {
   const [currentlyEditing, setCurrentlyEditing] = useState<number>(-1);
   const [points, setPoints] = useState<Point[]>([]);
   const [routes, setRoutes] = useState<Route[]>([]);
-  const [page, setPage] = useState<Pages>('home');
+  const [view, setView] = useState<Views>('home');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
 
@@ -35,7 +35,7 @@ const BaseProvider: FC<GenericProviderProps> = ({ children }) => {
     setCurrentlyEditing(-1);
     setPoints([]);
     setRoutes([]);
-    setPage('home');
+    setView('home');
   };
 
   return (
@@ -43,19 +43,19 @@ const BaseProvider: FC<GenericProviderProps> = ({ children }) => {
       value={{
         csvString,
         currentlyEditing,
-        page,
         points,
         reset,
         routes,
         setCsvString,
         setCurrentlyEditing,
-        setPage,
         setPoints,
         setRoutes,
         setSettings,
         setSettingsOpen,
         settings,
-        settingsOpen
+        settingsOpen,
+        setView,
+        view
       }}
     >
       {children}

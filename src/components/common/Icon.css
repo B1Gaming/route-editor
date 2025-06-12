@@ -28,17 +28,6 @@
   -ms-user-select: none;
   user-select: none;
 }
-.Icon.small {
-  font-size: 0.75rem;
-}
-
-.Icon.medium {
-  font-size: 1.25rem;
-}
-
-.Icon.large {
-  font-size: 2rem;
-}
 
 .Icon.pointable {
   transition-property: opacity;

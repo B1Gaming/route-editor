@@ -8,12 +8,9 @@
   --color-secondary: #5f5f5f;
   --color-secondary-hover: #676767;
   --color-secondary-active: #7f7f7f;
-  --color-error: #f00a0a;
-  --color-error-hover: #f83030;
-  --color-error-active: #f14856;
-  --color-warn: #f0ba0a;
-  --color-warn-hover: #f8c930;
-  --color-warn-active: #f5de5b;
+  --color-danger: #f00a0a;
+  --color-danger-hover: #f83030;
+  --color-danger-active: #f14856;
   --color-success: #0cbe0c;
   --color-success-hover: #25d33c;
   --color-success-active: #38f132;
@@ -28,6 +25,7 @@
   --element-text: var(--color-text);
   --element-text-inverted: var(--color-text-inverted);
   --element-border: var(--color-primary);
+  --element-border-neutral: #7f7f7f7f;
 }
 
 body {
@@ -60,14 +58,15 @@ input {
 
 code {
   padding: 0.25em;
-  border-radius: 0.5em;
-  border: 1px solid #7f7f7f;
-  background-color: #7f7f7f3f;
+  border-radius: 0.25em;
+  border: 1px solid var(--element-border-neutral);
 }
 
 hr {
-  border-color: #7f7f7fbf;
+  border-color: var(--element-border-neutral);
   border-style: solid;
+  border-width: 0;
+  border-top-width: 1px;
 }
 
 .App.dark {
@@ -123,30 +122,17 @@ hr {
   --element-background: var(--color-secondary-active);
 }
 
-.error {
-  --element-background: var(--color-error);
-  --element-border: var(--color-error);
+.danger {
+  --element-background: var(--color-danger);
+  --element-border: var(--color-danger);
 }
 
-.error:hover:not(:disabled) {
-  --element-background: var(--color-error-hover);
+.danger:hover:not(:disabled) {
+  --element-background: var(--color-danger-hover);
 }
 
-.error:active:not(:disabled) {
-  --element-background: var(--color-error-active);
-}
-
-.warn {
-  --element-background: var(--color-warn);
-  --element-border: var(--color-warn);
-}
-
-.warn:hover:not(:disabled) {
-  --element-background: var(--color-warn-hover);
-}
-
-.warn:active:not(:disabled) {
-  --element-background: var(--color-warn-active);
+.danger:active:not(:disabled) {
+  --element-background: var(--color-danger-active);
 }
 
 .success {

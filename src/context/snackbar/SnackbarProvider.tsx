@@ -1,5 +1,7 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
+import type { GenericProviderProps, SnackbarData } from '@model/common';
+
 import Snackbar from '@components/common/Snackbar.tsx';
 import { SnackbarContext } from '@context/snackbar/SnackbarContext.tsx';
 

@@ -24,7 +24,7 @@ homepage of this tool.
 
 - Improve user error handling
 - Improve visuals
-- Save route to local storage for later use instead of discarding data with each download
-- Make even more user-friendly than it already is
+- Save route to local storage for later use instead of discarding data after every reload
+- Make functionality more user-friendly
 - Improve performance and reduce file size
     - will probably be done by migrating to [Svelte](https://svelte.dev/)

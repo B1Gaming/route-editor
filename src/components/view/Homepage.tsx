@@ -3,6 +3,8 @@ import '@components/view/Homepage.css';
 import clsx from 'clsx';
 import {type ChangeEvent, type DragEvent, type FC, useState} from 'react';
 
+import type { Settings, Views } from '@model/common';
+
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
 import InfoModal from '@components/common/InfoModal';
@@ -13,7 +15,6 @@ import titleLogo from '@img/logo.svg';
 import {makePoints, makeRoutes, toUnicode} from '@utils/utils';
 
 const Homepage: FC = () => {
-  document.title = 'NSMBW Route Editor (Homepage)';
   const {
     setCsvString,
     setPoints,
@@ -147,7 +148,7 @@ const Homepage: FC = () => {
       </label>
       <div className={'alternative-actions'}>
         <p className={'alternatives-text'}>or open a new</p>
-        <Button icon={'location_on'}
+        <Button icon={'radio_button_checked'}
                 onClick={() => switchView('point')}>
           Point Editor
         </Button>

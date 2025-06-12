@@ -3,6 +3,8 @@ import '@components/common/Snackbar.css'
 import clsx from 'clsx';
 import { FC } from 'react';
 
+import type { SnackbarData } from '@model/common';
+
 interface SnackbarProps extends SnackbarData {
   isHiding?: boolean;
   onClick: () => void;

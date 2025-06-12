@@ -1,7 +1,8 @@
 import { type FC, useState } from 'react';
 
+import type { SelectOption } from '@model/common';
+
 import Editor from '@components/common/Editor';
-import Frame from '@components/common/Frame';
 import Input from '@components/common/Input';
 import Label from '@components/common/Label';
 import MultiTextInput from '@components/common/MultiTextInput';
@@ -12,7 +13,6 @@ import { allFlags } from '@utils/routeInfoData';
 import { verifyPointName } from '@utils/utils';
 
 const PointEditor: FC = () => {
-  document.title = 'NSMBW Route Editor (Points)';
   const { currentlyEditing, points, setPoints } = useBase();
   const [point, setPoint] = useState(points[0] ?? new Point());
 
@@ -49,7 +49,8 @@ const PointEditor: FC = () => {
     value={point}
     values={points}
   >
-    <Frame className={'general-info'} title={'General Information'}>
+    <fieldset className={'general-info'}>
+      <legend>General Information</legend>
       <Label>
         Name
         <Input
@@ -59,8 +60,9 @@ const PointEditor: FC = () => {
           value={point.name}
         />
       </Label>
-    </Frame>
-    <Frame className={'normal-exit'} title={'Normal Exit'}>
+    </fieldset>
+    <fieldset className={'normal-exit'}>
+      <legend>Normal Exit</legend>
       <Label>
         Flags
         <Select
@@ -94,8 +96,9 @@ const PointEditor: FC = () => {
           verifyMethod={verifyBoneMethod}
         />
       </Label>
-    </Frame>
-    <Frame className={'secret-exit'} title={'Secret Exit'}>
+    </fieldset>
+    <fieldset className={'secret-exit'}>
+      <legend>Secret Exit</legend>
       <Label>
         Unlocked Levels
         <MultiTextInput
@@ -118,7 +121,7 @@ const PointEditor: FC = () => {
           verifyMethod={verifyBoneMethod}
         />
       </Label>
-    </Frame>
+    </fieldset>
   </Editor>;
 };
 

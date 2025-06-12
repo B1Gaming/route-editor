@@ -1,3 +1,5 @@
+import type { Verifiable } from '@model/common';
+
 import { routeAnimations } from '@utils/routeInfoData';
 import { verifyPointName } from '@utils/utils';
 
@@ -9,6 +11,7 @@ interface RouteConstructorParams {
 class Route implements Verifiable {
   public animation;
   public name;
+
   constructor(param?: RouteConstructorParams) {
     this.name = param?.name ?? 'RW000W000';
     this.animation = param?.animation ?? routeAnimations[1].name;

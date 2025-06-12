@@ -3,6 +3,8 @@ import '@components/common/Select.css';
 import clsx from 'clsx';
 import { type FC, useState } from 'react';
 
+import type { SelectOption } from '@model/common';
+
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
 

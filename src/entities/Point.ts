@@ -1,3 +1,5 @@
+import type { PointVerificationOptions, Verifiable } from '@model/common';
+
 import { verifyPointName } from '@utils/utils';
 
 interface PointConstructorParam {

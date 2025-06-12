@@ -39,7 +39,7 @@ export default tseslint.config(
       ],
       'perfectionist/sort-imports': [
         'error',
-        { internalPattern: ['^~/.+', '@(base|components|context|entities|img|utils).+.(?!css)'] }
+        { internalPattern: ['^~/.+', '@(base|components|context|entities|img|model|utils).+.(?!css)'] }
       ]
     }
   }

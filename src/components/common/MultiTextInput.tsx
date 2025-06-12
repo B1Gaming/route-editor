@@ -1,6 +1,6 @@
 import '@components/common/MultiTextInput.css';
 
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
@@ -22,6 +22,10 @@ const MultiTextInput: FC<MultiTextInputProps> = ({ setParentValue, values, verif
       setValue('');
     }
   };
+
+  useEffect(() => {
+    setValue('');
+  }, [values]);
 
   return <div className={'MultiTextInput'}>
     <div className={'item-list'}>

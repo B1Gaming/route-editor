@@ -3,6 +3,8 @@ import '@components/common/Editor.css';
 import clsx from 'clsx';
 import { type Dispatch, type ReactNode, type SetStateAction, useState } from 'react';
 
+import type { Verifiable } from '@model/common';
+
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
 import Modal from '@components/common/Modal';
@@ -94,7 +96,7 @@ const Editor = <T extends Verifiable>({
       }
     }
     setSnackbarData({
-      color: 'error',
+      color: 'danger',
       message: `${errorMessage}${errors.length > 0 ? ': ' : ''}${errors.join(', ')}`
     });
     return !errorMessage && errors.length === 0;
@@ -103,7 +105,7 @@ const Editor = <T extends Verifiable>({
   const beforeDownload = () => {
     const errors: string[] = [];
     values.filter((v) => !v.isValid()).forEach((v, i) => errors.push(`Element ${v.name} at index ${i + 1} is invalid`));
-    setSnackbarData({ color: 'error', message: errors.join('\n') });
+    setSnackbarData({ color: 'danger', message: errors.join('\n') });
     return errors.length === 0;
   };
 
@@ -191,99 +193,97 @@ const Editor = <T extends Verifiable>({
         </div>
         <div className={'editor-modal-buttons'}>
           <Button onClick={() => setGoHomeModalShown(false)}>No</Button>
-          <Button color={'error'} onClick={() => reset()}>
+          <Button color={'danger'} onClick={() => reset()}>
             Yes
           </Button>
         </div>
       </Modal>
     )}
-    <div className={'editor-main-window'}>
-      <div className={'list'}>
-        {values.map((v, index) => (
-          <div
-            className={clsx(
-              'list-element',
-              { selected: currentlyEditing === index },
-              { disabled: !(valueIsNotEdited || index === currentlyEditing) }
-            )}
-            key={`${v.name}_${index}`}
+    <div className={'list'}>
+      {values.map((v, index) => (
+        <div
+          className={clsx(
+            'list-element',
+            { selected: currentlyEditing === index },
+            { disabled: !(valueIsNotEdited || index === currentlyEditing) }
+          )}
+          key={`${v.name}_${index}`}
+        >
+          <button
+            className={'element-name'}
+            disabled={!valueIsNotEdited}
+            onClick={() => {
+              setCurrentlyEditing(index);
+              setValue(values[index]);
+            }}
+            title={!valueIsNotEdited ? 'Please update or discard your changes before editing another element' : ''}
+            type={'button'}
           >
-            <button
-              className={'element-name'}
-              disabled={!valueIsNotEdited}
-              onClick={() => {
-                setCurrentlyEditing(index);
-                setValue(values[index]);
-              }}
-              title={!valueIsNotEdited ? 'Please update or discard your changes before editing another element' : ''}
-              type={'button'}
-            >
-              {v.name}
+            {v.name}
+          </button>
+          <div className={'element-buttons'}>
+            <button disabled={index === 0} onClick={() => moveUp(index)} type={'button'}>
+              <Icon type={'keyboard_arrow_up'}/>
             </button>
-            <div className={'element-buttons'}>
-              <button disabled={index === 0} onClick={() => moveUp(index)} type={'button'}>
-                <Icon type={'keyboard_arrow_up'}/>
-              </button>
-              <button onClick={() => remove(index)} type={'button'}>
-                <Icon type={'delete'}/>
-              </button>
-              <button disabled={index === values.length - 1} onClick={() => moveDown(index)}
-                type={'button'}>
-                <Icon type={'keyboard_arrow_down'}/>
-              </button>
-            </div>
+            <button onClick={() => remove(index)} type={'button'}>
+              <Icon type={'delete'}/>
+            </button>
+            <button disabled={index === values.length - 1} onClick={() => moveDown(index)}
+              type={'button'}>
+              <Icon type={'keyboard_arrow_down'}/>
+            </button>
           </div>
-        ))}
-      </div>
-      <div className={'bottom-actions'}>
-        <Button
-          className={'home-button'}
-          onClick={() => {
-            setGoHomeModalShown(true);
-          }}
-          title={'Homepage'}
-        >
-          <Icon type={'home'}/>
-        </Button>
-        <Button className={'new-button'} onClick={addValue}>
-          New
-        </Button>
-        <Button
-          className={'update-button'}
-          color={'success'}
-          disabled={valueIsNotEdited}
-          onClick={() => {
-            if (beforeUpdate()) {
-              update(currentlyEditing);
-            }
-          }}
-        >
-          Update
-        </Button>
-        <Button
-          className={'discard-button'}
-          color={'error'}
-          disabled={valueIsNotEdited}
-          onClick={() => {
-            setValue(values[currentlyEditing]);
-          }}
-        >
-          Discard
-        </Button>
-        <Button
-          className={'download-button'}
-          disabled={!values.length || !valueIsNotEdited}
-          onClick={() => {
-            if (beforeDownload()) {
-              downloadFile();
-            }
-          }}
-        >
-          Download
-        </Button>
-      </div>
-      <div className={'data-editor'}>{currentlyEditing >= 0 && children}</div>
+        </div>
+      ))}
     </div>
+    <div className={'bottom-actions'}>
+      <Button
+        className={'home-button'}
+        onClick={() => {
+          setGoHomeModalShown(true);
+        }}
+        title={'Homepage'}
+      >
+        <Icon type={'home'}/>
+      </Button>
+      <Button className={'new-button'} onClick={addValue}>
+        New
+      </Button>
+      <Button
+        className={'update-button'}
+        color={'success'}
+        disabled={valueIsNotEdited}
+        onClick={() => {
+          if (beforeUpdate()) {
+            update(currentlyEditing);
+          }
+        }}
+      >
+        Update
+      </Button>
+      <Button
+        className={'discard-button'}
+        color={'danger'}
+        disabled={valueIsNotEdited}
+        onClick={() => {
+          setValue(values[currentlyEditing]);
+        }}
+      >
+        Discard
+      </Button>
+      <Button
+        className={'download-button'}
+        disabled={!values.length || !valueIsNotEdited}
+        onClick={() => {
+          if (beforeDownload()) {
+            downloadFile();
+          }
+        }}
+      >
+        Download
+      </Button>
+    </div>
+    <div className={'data-editor'}>{currentlyEditing >= 0 && children}</div>
   </div>;
 };
 

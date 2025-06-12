@@ -3,6 +3,8 @@ import '@components/common/Button.css';
 import clsx from 'clsx';
 import { type FC, type HTMLProps, type ReactNode } from 'react';
 
+import type { ColorType } from '@model/common';
+
 import Icon from '@components/common/Icon';
 
 type ButtonProps = (ButtonWithIconProps | ButtonWithoutIconProps) & GenericButtonProps & HTMLProps<HTMLButtonElement>

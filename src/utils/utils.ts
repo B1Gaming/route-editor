@@ -1,5 +1,7 @@
 import Encoding from 'encoding-japanese';
 
+import type { PointVerificationOptions } from '@model/common';
+
 import Point from '@entities/Point';
 import Route from '@entities/Route';
 import { routeAnimations } from '@utils/routeInfoData';

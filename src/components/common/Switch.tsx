@@ -14,7 +14,7 @@ interface SwitchProps {
 const Switch: FC<SwitchProps> = ({active, children, onClick}) => {
   return <div className={'Switch'}>
     <label>{children}</label>
-    <Button color={active ? 'success' : 'error'} onClick={onClick}>
+    <Button color={active ? 'success' : 'danger'} onClick={onClick}>
       <Icon type={active ? 'check' : 'close'}/>
     </Button>
   </div>;

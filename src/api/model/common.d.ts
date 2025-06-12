@@ -1,27 +1,27 @@
-/// <reference types="react" />
+import type {ReactNode} from 'react';
 
-type ColorType = 'error' | 'primary' | 'secondary' | 'success' | 'warn';
+export type ColorType = 'danger' | 'primary' | 'secondary' | 'success';
 
-interface GenericProviderProps {
+export interface GenericProviderProps {
   children: ReactNode;
 }
 
-interface PointVerificationOptions {
+export interface PointVerificationOptions {
   flagBone?: boolean;
   kBone?: boolean;
   levelName?: boolean;
 }
 
-interface SelectOption {
+export interface SelectOption {
   label: string;
   value: string;
 }
 
-interface Settings {
+export interface Settings {
   darkMode: boolean;
 }
 
-interface SnackbarData {
+export interface SnackbarData {
   color?: ColorType;
   message: string;
 }
@@ -29,7 +29,7 @@ interface SnackbarData {
 /**
  * An interface with methods for classes that need to be validated in order to be used properly.
  */
-interface Verifiable {
+export interface Verifiable {
   /**
    * Compares this object to another `Verifiable` object.
    * @param another the other `Verifiable` object to compare this object to.
@@ -45,4 +45,4 @@ interface Verifiable {
   name: string;
 }
 
-type Views = 'home' | 'point' | 'route';
+export type Views = 'home' | 'point' | 'route';

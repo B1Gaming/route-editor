@@ -3,6 +3,7 @@ import { type FC, useState } from 'react';
 import { BaseContext } from '@context/base/BaseContext.tsx';
 import Point from '@entities/Point.ts';
 import Route from '@entities/Route.ts';
+import type { GenericProviderProps, Settings, Views } from '@model/common';
 
 
 const BaseProvider: FC<GenericProviderProps> = ({ children }) => {

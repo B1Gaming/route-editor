@@ -1,7 +1,6 @@
 import { type FC, useState } from 'react';
 
 import Editor from '@components/common/Editor';
-import Frame from '@components/common/Frame';
 import Input from '@components/common/Input';
 import Label from '@components/common/Label';
 import Select from '@components/common/Select';
@@ -10,7 +9,6 @@ import Route from '@entities/Route';
 import { routeAnimations } from '@utils/routeInfoData';
 
 const RouteEditor: FC = () => {
-  document.title = 'NSMBW Route Editor (Routes)';
   const { routes, setRoutes } = useBase();
   const [route, setRoute] = useState(routes[0] ?? new Route());
 
@@ -31,7 +29,8 @@ const RouteEditor: FC = () => {
     value={route}
     values={routes}
   >
-    <Frame title={'General Information'}>
+    <fieldset>
+      <legend>General Information</legend>
       <Label>
         Route Name
         <Input onChange={(e) => setRoute(new Route({ ...route, name: e.target.value }))}
@@ -48,7 +47,7 @@ const RouteEditor: FC = () => {
           }}
         />
       </Label>
-    </Frame>
+    </fieldset>
   </Editor>;
 };
 

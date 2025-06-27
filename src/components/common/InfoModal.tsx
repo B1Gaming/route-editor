@@ -120,9 +120,9 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
               <h4>Additions</h4>
               {renderList(entry.additions)}
             </>}
-            {!!entry.removals.length && <>
-              <h4>Removals</h4>
-              {renderList(entry.removals)}
+            {!!entry.changes.length && <>
+              <h4>Changes</h4>
+              {renderList(entry.changes)}
             </>}
             {!!entry.bugfixes.length && <>
               <h4>Bugfixes</h4>

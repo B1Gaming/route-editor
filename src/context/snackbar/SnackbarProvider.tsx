@@ -18,7 +18,7 @@ const SnackbarProvider: FC<GenericProviderProps> = ({ children }) => {
       setSnackbarData({ message: '' });
       timeoutId.current = setTimeout(() => {
         setIsHiding(false);
-      }, 100)
+      }, 100);
     }, 400);
   }, []);
 
@@ -39,11 +39,11 @@ const SnackbarProvider: FC<GenericProviderProps> = ({ children }) => {
     {children}
     {message &&
       <Snackbar
-      color={color}
-      isHiding={isHiding}
-      message={message}
-      onClick={() => hideSnackbar()}
-    />}
+        color={color}
+        isHiding={isHiding}
+        message={message}
+        onClick={() => hideSnackbar()}
+      />}
   </SnackbarContext.Provider>;
 };
 

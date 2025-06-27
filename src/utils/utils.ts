@@ -55,25 +55,25 @@ export const makePoints = (pointStr: string) => {
   const points: Point[] = [];
 
   pointStr
-    .split(pointStr.includes('\r\n') ? '\r\n' : '\n')
-    .filter((row) => row.length)
-    .map((row) => {
-      const pointArr = csvSplit(row);
+  .split(pointStr.includes('\r\n') ? '\r\n' : '\n')
+  .filter((row) => row.length)
+  .map((row) => {
+    const pointArr = csvSplit(row);
 
-      // ID will be unused here because it'll be easier to hardcode the IDs to be based on the list order.
-      const [_id, name, flags, unlockedLevels, unlockedRoutes, unused, unlockedLevelsSE, unlockedRoutesSE] = pointArr;
-      points.push(
-        new Point({
-          flags: csvArraySplit(flags),
-          name,
-          unlockedLevels: csvArraySplit(unlockedLevels),
-          unlockedLevelsSE: csvArraySplit(unlockedLevelsSE),
-          unlockedRoutes: csvArraySplit(unlockedRoutes),
-          unlockedRoutesSE: csvArraySplit(unlockedRoutesSE),
-          unused: csvArraySplit(unused)
-        })
-      );
-    });
+    // ID will be unused here because it'll be easier to hardcode the IDs to be based on the list order.
+    const [_id, name, flags, unlockedLevels, unlockedRoutes, unused, unlockedLevelsSE, unlockedRoutesSE] = pointArr;
+    points.push(
+      new Point({
+        flags: csvArraySplit(flags),
+        name,
+        unlockedLevels: csvArraySplit(unlockedLevels),
+        unlockedLevelsSE: csvArraySplit(unlockedLevelsSE),
+        unlockedRoutes: csvArraySplit(unlockedRoutes),
+        unlockedRoutesSE: csvArraySplit(unlockedRoutesSE),
+        unused: csvArraySplit(unused)
+      })
+    );
+  });
 
   return points;
 };
@@ -87,19 +87,19 @@ export const makeRoutes = (routeStr: string) => {
   const routes: Route[] = [];
 
   routeStr
-    .split(routeStr.includes('\r\n') ? '\r\n' : '\n')
-    .filter((row) => row.length)
-    .map((row) => {
-      const routeArr = csvSplit(row).filter((point) => point?.length);
-      const [name, anim] = routeArr;
+  .split(routeStr.includes('\r\n') ? '\r\n' : '\n')
+  .filter((row) => row.length)
+  .map((row) => {
+    const routeArr = csvSplit(row).filter((point) => point?.length);
+    const [name, anim] = routeArr;
 
-      routes.push(
-        new Route({
-          animation: routeAnimations[routeAnimations.map((anim) => anim.originalName).indexOf(anim)].name,
-          name
-        })
-      );
-    });
+    routes.push(
+      new Route({
+        animation: routeAnimations[routeAnimations.map((anim) => anim.originalName).indexOf(anim)].name,
+        name
+      })
+    );
+  });
   return routes;
 };
 

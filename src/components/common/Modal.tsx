@@ -19,7 +19,7 @@ const Modal: FC<ModalProps> = ({ children, className, noPadding, onBackdropClick
   };
 
   return <div className={'modal-backdrop'} onClick={handleBackdropClick}>
-    <div className={clsx('Modal', {'padded': !noPadding}, className)}>{children}</div>
+    <div className={clsx('Modal', { 'padded': !noPadding }, className)}>{children}</div>
   </div>;
 };
 

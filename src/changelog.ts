@@ -1,15 +1,20 @@
 interface ChangelogEntry {
   additions: string[];
   bugfixes: string[];
-  removals: string[];
-  version: `${number}.${number}.${number}`
+  changes: string[];
+  version: string;
 }
 
 const changelog: ChangelogEntry[] = [{
-  additions: ['Initial release!'],
+  additions: ['initial release!'],
   bugfixes: [],
-  removals: [],
+  changes: [],
   version: '1.0.0'
+}, {
+  additions: ['page icon', "example texts in input fields"],
+  bugfixes: [],
+  changes: ['styling and color improvements', 'minimal HTML cleanup', 'file size optimisations'],
+  version: '1.0.1'
 }];
 
 export default changelog;

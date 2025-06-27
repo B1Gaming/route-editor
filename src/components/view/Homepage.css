@@ -88,6 +88,10 @@
   height: 75vh;
 }
 
+.settings-modal h1 {
+  margin-bottom: 0;
+}
+
 .settings-body {
   padding: 1em 0;
 }

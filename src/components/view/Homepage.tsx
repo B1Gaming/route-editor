@@ -1,7 +1,7 @@
 import '@components/view/Homepage.css';
 
 import clsx from 'clsx';
-import {type ChangeEvent, type DragEvent, type FC, useState} from 'react';
+import { type ChangeEvent, type DragEvent, type FC, useState } from 'react';
 
 import type { Settings, Views } from '@model/common';
 
@@ -12,7 +12,7 @@ import Modal from '@components/common/Modal';
 import Switch from '@components/common/Switch';
 import useBase from '@context/base/useBase.ts';
 import titleLogo from '@img/logo.svg';
-import {makePoints, makeRoutes, toUnicode} from '@utils/utils';
+import { makePoints, makeRoutes, toUnicode } from '@utils/utils';
 
 const Homepage: FC = () => {
   const {
@@ -104,21 +104,24 @@ const Homepage: FC = () => {
   return <div className={'Homepage'}>
     {infoModalOpen && <InfoModal closeFunction={() => setInfoModalOpen(false)}/>}
     {settingsOpen && (
-        <Modal className={'settings-modal'} onBackdropClick={() => setSettingsOpen(false)}>
-          <Icon onClick={() => setSettingsOpen(false)} type={'close'}/>
-          <h1>Settings</h1>
-          <div className={'settings-body'}>
+      <Modal className={'settings-modal'} onBackdropClick={() => setSettingsOpen(false)}>
+        <Icon onClick={() => setSettingsOpen(false)} type={'close'}/>
+        <h1>Settings</h1>
+        <div className={'settings-body'}>
+          <fieldset>
+            <legend>Design</legend>
             <Switch
-                active={settings.darkMode}
-                onClick={() => updateSettings({...settings, darkMode: !settings.darkMode})}
+              active={settings.darkMode}
+              onClick={() => updateSettings({ ...settings, darkMode: !settings.darkMode })}
             >
               Dark Mode
             </Switch>
-          </div>
-          <div className={'settings-footer'}>
-            <Button onClick={() => setSettingsOpen(false)}>Close</Button>
-          </div>
-        </Modal>
+          </fieldset>
+        </div>
+        <div className={'settings-footer'}>
+          <Button onClick={() => setSettingsOpen(false)}>Close</Button>
+        </div>
+      </Modal>
     )}
     <div className={'header'}>
       <img alt={'NSMBW Route Creator'} className={'title-logo'} src={titleLogo}/>
@@ -129,19 +132,19 @@ const Homepage: FC = () => {
         <div>The provided file is not a valid New Super Mario Bros. Wii RouteInfo CSV
           file</div>}
       <label
-          className={clsx('upload-dialog', uploadClass)}
-          htmlFor={'file-upload'}
-          onDragEnter={(e) => {
-            e.preventDefault();
-            setUploadClass('on-drag');
-            setUploadText('Drop file here');
-          }}
-          onDragLeave={(e) => {
-            e.preventDefault();
-            setUploadClass('');
-            setUploadText('Upload a file');
-          }}
-          onDropCapture={handleDragAndDrop}
+        className={clsx('upload-dialog', uploadClass)}
+        htmlFor={'file-upload'}
+        onDragEnter={(e) => {
+          e.preventDefault();
+          setUploadClass('on-drag');
+          setUploadText('Drop file here');
+        }}
+        onDragLeave={(e) => {
+          e.preventDefault();
+          setUploadClass('');
+          setUploadText('Upload a file');
+        }}
+        onDropCapture={handleDragAndDrop}
       >
         {uploadText}
         <input accept={'text/csv'} id={'file-upload'} onChange={handleUpload} type={'file'}/>
@@ -149,12 +152,12 @@ const Homepage: FC = () => {
       <div className={'alternative-actions'}>
         <p className={'alternatives-text'}>or open a new</p>
         <Button icon={'radio_button_checked'}
-                onClick={() => switchView('point')}>
+          onClick={() => switchView('point')}>
           Point Editor
         </Button>
         <p className={'or-text'}>or</p>
         <Button icon={'polyline'}
-                onClick={() => switchView('route')}>
+          onClick={() => switchView('route')}>
           Route Editor
         </Button>
       </div>

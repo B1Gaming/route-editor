@@ -69,14 +69,14 @@ hr {
   border-top-width: 1px;
 }
 
-.App.dark {
+main.dark {
   --window-background: #1c1d1e;
   --element-text-inverted: white;
   --color-a: #07f;
   --color-a-visited: #b7f;
 }
 
-.App {
+main {
   height: 100vh;
   overflow: hidden;
   display: grid;

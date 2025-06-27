@@ -57,6 +57,7 @@ const PointEditor: FC = () => {
           onChange={(e) => {
             setPoint(new Point({ ...point, name: e.target.value }));
           }}
+          placeholder={'e.g. W101'}
           value={point.name}
         />
       </Label>
@@ -77,6 +78,7 @@ const PointEditor: FC = () => {
       <Label>
         Unlocked Levels
         <MultiTextInput
+          placeholder={'e.g. W102'}
           setParentValue={(values: string[]) => setPoint(new Point({
             ...point,
             unlockedLevels: values
@@ -88,6 +90,7 @@ const PointEditor: FC = () => {
       <Label>
         Unlocked Routes / Bones
         <MultiTextInput
+          placeholder={'e.g. RW101W102'}
           setParentValue={(values: string[]) => setPoint(new Point({
             ...point,
             unlockedRoutes: values
@@ -102,6 +105,7 @@ const PointEditor: FC = () => {
       <Label>
         Unlocked Levels
         <MultiTextInput
+          placeholder={'e.g. W1W0'}
           setParentValue={(values: string[]) => setPoint(new Point({
             ...point,
             unlockedLevelsSE: values
@@ -113,6 +117,7 @@ const PointEditor: FC = () => {
       <Label>
         Unlocked Routes / Bones
         <MultiTextInput
+          placeholder={'e.g. RW101W1W0'}
           setParentValue={(values: string[]) => setPoint(new Point({
             ...point,
             unlockedRoutesSE: values

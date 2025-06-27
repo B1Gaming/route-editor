@@ -131,7 +131,7 @@
 }
 
 fieldset {
-  border:1px solid var(--element-border-neutral);
+  border: 1px solid var(--element-border-neutral);
   width: max-content;
 }
 

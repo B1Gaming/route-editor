@@ -1,22 +1,20 @@
 import '@components/common/Switch.css';
 
-import {type FC, type MouseEventHandler, type ReactNode} from 'react';
-
-import Button from '@components/common/Button';
-import Icon from '@components/common/Icon';
+import type { FC, MouseEventHandler, ReactNode } from 'react';
 
 interface SwitchProps {
   active: boolean;
   children: ReactNode;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick: MouseEventHandler<HTMLInputElement>;
 }
 
-const Switch: FC<SwitchProps> = ({active, children, onClick}) => {
-  return <div className={'Switch'}>
-    <label>{children}</label>
-    <Button color={active ? 'success' : 'danger'} onClick={onClick}>
-      <Icon type={active ? 'check' : 'close'}/>
-    </Button>
+const Switch: FC<SwitchProps> = ({ active, children, onClick }) => {
+  return <div className={'switch-wrapper'}>
+    {children}
+    <label className={'Switch'}>
+      <input checked={active} onClick={onClick} type={'checkbox'}/>
+      <span className={'slider'}/>
+    </label>
   </div>;
 };
 

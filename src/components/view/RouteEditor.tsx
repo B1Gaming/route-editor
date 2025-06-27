@@ -13,8 +13,8 @@ const RouteEditor: FC = () => {
   const [route, setRoute] = useState(routes[0] ?? new Route());
 
   let worldNum = '0';
-  if(routes.length) {
-    worldNum = routes.filter((r) => r.name.startsWith('RW'))[0].name[2]
+  if (routes.length) {
+    worldNum = routes.filter((r) => r.name.startsWith('RW'))[0].name[2];
   }
 
   return <Editor
@@ -34,7 +34,7 @@ const RouteEditor: FC = () => {
       <Label>
         Route Name
         <Input onChange={(e) => setRoute(new Route({ ...route, name: e.target.value }))}
-               value={route.name}/>
+          placeholder={'e.g. RW101W102'} value={route.name}/>
       </Label>
       <Label>
         Player Animation

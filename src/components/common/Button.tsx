@@ -7,7 +7,10 @@ import type { ColorType } from '@model/common';
 
 import Icon from '@components/common/Icon';
 
-type ButtonProps = (ButtonWithIconProps | ButtonWithoutIconProps) & GenericButtonProps & HTMLProps<HTMLButtonElement>
+type ButtonProps =
+  (ButtonWithIconProps | ButtonWithoutIconProps)
+  & GenericButtonProps
+  & HTMLProps<HTMLButtonElement>
 
 interface ButtonWithIconProps {
   icon: string;
@@ -37,7 +40,7 @@ const Button: FC<ButtonProps> = ({
   type = 'button',
   ...props
 }) => {
-  const iconElement = icon && <Icon type={icon} />;
+  const iconElement = icon && <Icon type={icon}/>;
 
   return <button
     className={clsx('Button', { reversed }, color, className, { outlined })}

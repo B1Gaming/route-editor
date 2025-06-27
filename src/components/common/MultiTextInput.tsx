@@ -1,17 +1,22 @@
 import '@components/common/MultiTextInput.css';
 
-import { type FC, useEffect, useState } from 'react';
+import { type FC, type HTMLProps, useEffect, useState } from 'react';
 
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
 
-interface MultiTextInputProps {
+interface MultiTextInputProps extends HTMLProps<HTMLInputElement> {
   setParentValue: (values: string[]) => void;
   values: string[];
   verifyMethod?: (value: string) => boolean;
 }
 
-const MultiTextInput: FC<MultiTextInputProps> = ({ setParentValue, values, verifyMethod }) => {
+const MultiTextInput: FC<MultiTextInputProps> = ({
+  setParentValue,
+  values,
+  verifyMethod,
+  ...props
+}) => {
   const [value, setValue] = useState('');
   const valuesCopy = [...values];
 
@@ -53,8 +58,10 @@ const MultiTextInput: FC<MultiTextInputProps> = ({ setParentValue, values, verif
         }}
         type="text"
         value={value}
+        {...props}
       />
-      <Button className={'add-item-button'} disabled={value === ''} onClick={handleUpdateValue}>
+      <Button className={'add-item-button'} disabled={value.trim() === ''}
+        onClick={handleUpdateValue}>
         <Icon type={'add'}/>
       </Button>
     </div>

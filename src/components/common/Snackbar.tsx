@@ -1,4 +1,4 @@
-import '@components/common/Snackbar.css'
+import '@components/common/Snackbar.css';
 
 import clsx from 'clsx';
 import { FC } from 'react';

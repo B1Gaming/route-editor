@@ -10,7 +10,7 @@ import Icon from '@components/common/Icon';
 type ButtonProps =
   (ButtonWithIconProps | ButtonWithoutIconProps)
   & GenericButtonProps
-  & HTMLProps<HTMLButtonElement>
+  & HTMLProps<HTMLButtonElement>;
 
 interface ButtonWithIconProps {
   icon: string;

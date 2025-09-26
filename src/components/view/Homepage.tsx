@@ -1,9 +1,9 @@
 import '@components/view/Homepage.css';
 
 import clsx from 'clsx';
-import { type ChangeEvent, type DragEvent, type FC, useState } from 'react';
+import {type ChangeEvent, type DragEvent, useState} from 'react';
 
-import type { Settings, Views } from '@model/common';
+import type {Settings, Views} from '@model/common';
 
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
@@ -12,9 +12,9 @@ import Modal from '@components/common/Modal';
 import Switch from '@components/common/Switch';
 import useBase from '@context/base/useBase.ts';
 import titleLogo from '@img/logo.svg';
-import { makePoints, makeRoutes, toUnicode } from '@utils/utils';
+import {makePoints, makeRoutes, toUnicode} from '@utils/utils';
 
-const Homepage: FC = () => {
+export default function Homepage() {
   const {
     setCsvString,
     setPoints,
@@ -23,7 +23,7 @@ const Homepage: FC = () => {
     setSettingsOpen,
     settings,
     settingsOpen,
-    setView
+    setView,
   } = useBase();
 
   const [uploadError, setUploadError] = useState(false);
@@ -31,7 +31,7 @@ const Homepage: FC = () => {
   const [uploadText, setUploadText] = useState('Upload a file');
   const [uploadClass, setUploadClass] = useState('');
 
-  const handleFile = (file: File | null) => {
+  function handleFile(file: File | null) {
     if (file) {
       setUploadError(false);
       const reader = new FileReader();
@@ -63,9 +63,9 @@ const Homepage: FC = () => {
       }
       reader.readAsArrayBuffer(file);
     }
-  };
+  }
 
-  const handleDragAndDrop = (e: DragEvent<HTMLLabelElement>) => {
+  function handleDragAndDrop(e: DragEvent<HTMLLabelElement>) {
     e.preventDefault();
     if (e.dataTransfer.items) {
       [...e.dataTransfer.items].forEach((item) => {
@@ -74,20 +74,20 @@ const Homepage: FC = () => {
         }
       });
     }
-  };
+  }
 
-  const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  function handleUpload(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     if (e.target.files) {
       handleFile(e.target.files[0]);
     }
-  };
+  }
 
-  const switchView = (viewName: Views) => {
+  function switchView(viewName: Views) {
     setView(viewName);
-  };
+  }
 
-  const updateSettings = (data: Settings) => {
+  function updateSettings(data: Settings) {
     let key: keyof Settings;
     let settingsStr = '';
     for (key in data) {
@@ -99,52 +99,50 @@ const Homepage: FC = () => {
     oneYearFuture.setFullYear(oneYearFuture.getFullYear() + 1);
     oneYearFuture.setFullYear(new Date().getFullYear() + 1);
     document.cookie = `settings=${parseInt(settingsStr)};expires=${oneYearFuture.toUTCString()}`;
-  };
+  }
 
   return <div className={'Homepage'}>
     {infoModalOpen && <InfoModal closeFunction={() => setInfoModalOpen(false)}/>}
     {settingsOpen && (
-      <Modal className={'settings-modal'} onBackdropClick={() => setSettingsOpen(false)}>
-        <Icon onClick={() => setSettingsOpen(false)} type={'close'}/>
-        <h1>Settings</h1>
-        <div className={'settings-body'}>
-          <fieldset>
-            <legend>Design</legend>
-            <Switch
-              active={settings.darkMode}
-              onClick={() => updateSettings({ ...settings, darkMode: !settings.darkMode })}
-            >
-              Dark Mode
-            </Switch>
-          </fieldset>
-        </div>
-        <div className={'settings-footer'}>
-          <Button onClick={() => setSettingsOpen(false)}>Close</Button>
-        </div>
-      </Modal>
+        <Modal className={'settings-modal'} onBackdropClick={() => setSettingsOpen(false)}>
+          <Icon onClick={() => setSettingsOpen(false)} type={'close'}/>
+          <h1>Settings</h1>
+          <div className={'settings-body'}>
+            <fieldset>
+              <legend>Design</legend>
+              <Switch
+                  active={settings.darkMode}
+                  onClick={() => updateSettings({...settings, darkMode: !settings.darkMode})}
+              >
+                Dark Mode
+              </Switch>
+            </fieldset>
+          </div>
+          <div className={'settings-footer'}>
+            <Button onClick={() => setSettingsOpen(false)}>Close</Button>
+          </div>
+        </Modal>
     )}
     <div className={'header'}>
-      <img alt={'NSMBW Route Creator'} className={'title-logo'} src={titleLogo}/>
+      <img alt={'NSMBW Route Editor'} className={'title-logo'} src={titleLogo}/>
       <p>A tool to help with creating RouteInfo Files for New Super Mario Bros. Wii</p>
     </div>
     <div className={'homepage-content'}>
-      {uploadError &&
-        <div>The provided file is not a valid New Super Mario Bros. Wii RouteInfo CSV
-          file</div>}
+      {uploadError && <div>The provided file is not a valid New Super Mario Bros. Wii RouteInfo CSV file</div>}
       <label
-        className={clsx('upload-dialog', uploadClass)}
-        htmlFor={'file-upload'}
-        onDragEnter={(e) => {
-          e.preventDefault();
-          setUploadClass('on-drag');
-          setUploadText('Drop file here');
-        }}
-        onDragLeave={(e) => {
-          e.preventDefault();
-          setUploadClass('');
-          setUploadText('Upload a file');
-        }}
-        onDropCapture={handleDragAndDrop}
+          className={clsx('upload-dialog', uploadClass)}
+          htmlFor={'file-upload'}
+          onDragEnter={(e) => {
+            e.preventDefault();
+            setUploadClass('on-drag');
+            setUploadText('Drop file here');
+          }}
+          onDragLeave={(e) => {
+            e.preventDefault();
+            setUploadClass('');
+            setUploadText('Upload a file');
+          }}
+          onDropCapture={handleDragAndDrop}
       >
         {uploadText}
         <input accept={'text/csv'} id={'file-upload'} onChange={handleUpload} type={'file'}/>
@@ -152,12 +150,12 @@ const Homepage: FC = () => {
       <div className={'alternative-actions'}>
         <p className={'alternatives-text'}>or open a new</p>
         <Button icon={'radio_button_checked'}
-          onClick={() => switchView('point')}>
+                onClick={() => switchView('point')}>
           Point Editor
         </Button>
         <p className={'or-text'}>or</p>
         <Button icon={'polyline'}
-          onClick={() => switchView('route')}>
+                onClick={() => switchView('route')}>
           Route Editor
         </Button>
       </div>
@@ -169,6 +167,4 @@ const Homepage: FC = () => {
       <Icon type={'settings'}/>
     </Button>
   </div>;
-};
-
-export default Homepage;
+}

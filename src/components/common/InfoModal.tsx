@@ -1,6 +1,6 @@
 import '@components/common/InfoModal.css';
 
-import { type FC, useState } from 'react';
+import {useState} from 'react';
 
 import changelog from '@base/changelog.ts';
 import Button from '@components/common/Button';
@@ -13,7 +13,7 @@ interface InfoModalProps {
   closeFunction: () => void;
 }
 
-const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
+export default function InfoModal({closeFunction}: InfoModalProps) {
   const [contentTab, setContentTab] = useState<ContentTab>('about');
 
   const renderList = (list: string[]) => <ul>{list.map((entry) => <li>{entry}</li>)}</ul>;
@@ -40,7 +40,8 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
             set. <code>xxx</code> can be any 3-digit number. However, it is recommended to set them
             up in chronological order and that each set of K-points between two levels always takes
             up a multiple of 10 available numbers. They usually start at <code>K011</code>
-            <br/>Example: A route from 1-1 to 1-2 needs one K-point, which would then be
+            <br/>
+            Example: A route from 1-1 to 1-2 needs one K-point, which would then be
             named <code>K011</code>. The next K-point, that would come after 1-2 for instance,
             should then be named <code>K021</code> for ease of organisation.
           </li>
@@ -59,7 +60,7 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
         </ul>
         <p>
           For more information, visit the <a
-          href={'https://horizon.miraheze.org/wiki/World_Map_Data'} target={'_blank'}>
+            href={'https://horizon.miraheze.org/wiki/World_Map_Data'} target={'_blank'}>
           World Map Data
         </a> page on the Horizon wiki
         </p>
@@ -79,8 +80,8 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
         </ul>
         <p>
           For a full list, visit the <a
-          href={'https://horizon.miraheze.org/wiki/Editing_the_Original_Maps#Editing_Route_Animations'}
-          target={'_blank'}>
+            href={'https://horizon.miraheze.org/wiki/Editing_the_Original_Maps#Editing_Route_Animations'}
+            target={'_blank'}>
           Editing the Original Maps -&gt; Editing Route Animations
         </a> page on the Horizon wiki.
         </p>
@@ -98,7 +99,7 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
         </p>
         <p>
           For more information, check out the <a
-          href={'https://horizon.miraheze.org/wiki/Editing_the_Original_Maps'} target={'_blank'}>
+            href={'https://horizon.miraheze.org/wiki/Editing_the_Original_Maps'} target={'_blank'}>
           Editing the Original Maps
         </a> page on the Horizon wiki.
         </p>
@@ -148,6 +149,4 @@ const InfoModal: FC<InfoModalProps> = ({ closeFunction }) => {
     <Icon onClick={closeFunction} type={'close'}/>
     <div className={'content'}>{contentWindow}</div>
   </Modal>;
-};
-
-export default InfoModal;
+}

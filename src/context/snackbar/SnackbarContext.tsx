@@ -1,6 +1,6 @@
-import { createContext, type Dispatch, type SetStateAction } from 'react';
+import {createContext, type Dispatch, type SetStateAction} from 'react';
 
-import type { SnackbarData } from '@model/common';
+import type {SnackbarData} from '@model/common';
 
 interface SnackbarContextType {
   setSnackbarData: Dispatch<SetStateAction<SnackbarData>>;

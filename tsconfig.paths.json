@@ -2,13 +2,27 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@base/*": ["src/*"],
-      "@img/*": ["src/img/*"],
-      "@components/*": ["src/components/*"],
-      "@context/*": ["src/context/*"],
-      "@entities/*": ["src/entities/*"],
-      "@model/*": ["src/api/model/*"],
-      "@utils/*": ["src/utils/*"]
+      "@base/*": [
+        "src/*"
+      ],
+      "@img/*": [
+        "src/img/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@entities/*": [
+        "src/entities/*"
+      ],
+      "@model/*": [
+        "src/api/model/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ]
     }
   }
 }

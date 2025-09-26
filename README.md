@@ -9,7 +9,7 @@ Wii's world maps. While the original RouteInfo files are just plain CSV files, a
 technicalities come from hardcoded strings not many people are aware of. This tool helps with making
 this process more user-friendly while preventing errors from happening while editing instead of
 figuring out said errors during playtesting. It is available
-under https://b1gaming.github.io/route-creator
+under https://b1gaming.github.io/route-editor
 
 ## Route Documentation
 
@@ -26,5 +26,3 @@ homepage of this tool.
 - Improve visuals
 - Save route to local storage for later use instead of discarding data after every reload
 - Make functionality more user-friendly
-- Improve performance and reduce file size
-    - will probably be done by migrating to [Svelte](https://svelte.dev/)

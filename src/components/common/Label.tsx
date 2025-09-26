@@ -1,13 +1,11 @@
 import '@components/common/Label.css';
 
-import type { FC, ReactNode } from 'react';
+import type {ReactNode} from 'react';
 
 interface LabelProps {
   children: ReactNode;
 }
 
-const Label: FC<LabelProps> = ({ children }) => {
+export default function Label({children}: LabelProps) {
   return <div className={'Label'}>{children}</div>;
-};
-
-export default Label;
+}

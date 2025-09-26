@@ -14,7 +14,7 @@
   --color-success: #0cbe0c;
   --color-success-hover: #25d33c;
   --color-success-active: #38f132;
-  --color-a: #00e;
+  --color-a: #0000ee;
   --color-a-visited: #551a8b;
 
   /*
@@ -72,8 +72,8 @@ hr {
 main.dark {
   --window-background: #1c1d1e;
   --element-text-inverted: white;
-  --color-a: #07f;
-  --color-a-visited: #b7f;
+  --color-a: #0077ff;
+  --color-a-visited: #bb77ff;
 }
 
 main {

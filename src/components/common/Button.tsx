@@ -1,16 +1,16 @@
 import '@components/common/Button.css';
 
 import clsx from 'clsx';
-import { type FC, type HTMLProps, type ReactNode } from 'react';
+import {type HTMLProps, type ReactNode} from 'react';
 
-import type { ColorType } from '@model/common';
+import type {ColorType} from '@model/common';
 
 import Icon from '@components/common/Icon';
 
 type ButtonProps =
-  (ButtonWithIconProps | ButtonWithoutIconProps)
-  & GenericButtonProps
-  & HTMLProps<HTMLButtonElement>;
+    (ButtonWithIconProps | ButtonWithoutIconProps)
+    & GenericButtonProps
+    & HTMLProps<HTMLButtonElement>;
 
 interface ButtonWithIconProps {
   icon: string;
@@ -30,7 +30,7 @@ interface GenericButtonProps {
   type?: 'button' | 'reset' | 'submit';
 }
 
-const Button: FC<ButtonProps> = ({
+export default function Button({
   children,
   className,
   color = 'primary',
@@ -39,15 +39,13 @@ const Button: FC<ButtonProps> = ({
   reversed,
   type = 'button',
   ...props
-}) => {
+}: ButtonProps) {
   const iconElement = icon && <Icon type={icon}/>;
 
   return <button
-    className={clsx('Button', { reversed }, color, className, { outlined })}
-    type={type} {...props}>
+      className={clsx('Button', {reversed}, color, className, {outlined})}
+      type={type} {...props}>
     {iconElement}
     {children}
   </button>;
-};
-
-export default Button;
+}

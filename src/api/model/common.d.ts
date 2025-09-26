@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type {ReactNode} from 'react';
 
 export type ColorType = 'danger' | 'primary' | 'secondary' | 'success';
 
@@ -33,16 +33,17 @@ export interface Verifiable {
   /**
    * Compares this object to another `Verifiable` object.
    * @param another the other `Verifiable` object to compare this object to.
-   * @returns whether the objects are equal.
+   * @return whether the objects are equal.
    */
   equals: (another: Verifiable) => boolean;
   /**
-   * Validates the object.
-   * @returns if the object is valid
+   * @return if the object is valid.
    */
   isValid: () => boolean;
-
-  name: string;
+  /**
+   * @return a string representation of the most notable property.
+   */
+  toString: () => string;
 }
 
 export type Views = 'home' | 'point' | 'route';

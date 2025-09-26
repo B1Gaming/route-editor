@@ -1,6 +1,6 @@
-import { createContext, type Dispatch, type SetStateAction } from 'react';
+import {createContext, type Dispatch, type SetStateAction} from 'react';
 
-import type { Settings, Views } from '@model/common';
+import type {Settings, Views} from '@model/common';
 
 import Point from '@entities/Point.ts';
 import Route from '@entities/Route.ts';

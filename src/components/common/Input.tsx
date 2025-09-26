@@ -1,7 +1,7 @@
 import '@components/common/Input.css';
 
 import clsx from 'clsx';
-import { type ChangeEventHandler, type FC, type HTMLProps } from 'react';
+import {type ChangeEventHandler, type HTMLProps} from 'react';
 
 interface InputProps extends Omit<HTMLProps<HTMLInputElement>, 'type'> {
   className?: string;
@@ -9,10 +9,8 @@ interface InputProps extends Omit<HTMLProps<HTMLInputElement>, 'type'> {
   value: number | readonly string[] | string | undefined;
 }
 
-const Input: FC<InputProps> = ({ className, onChange, value, ...props }) => {
+export default function Input({className, onChange, value, ...props}: InputProps) {
   return <div className={clsx('Input', className)}>
     <input onChange={onChange} type={'text'} value={value} {...props} />
   </div>;
-};
-
-export default Input;
+}

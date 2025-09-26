@@ -1,6 +1,6 @@
 import '@components/common/Switch.css';
 
-import type { FC, MouseEventHandler, ReactNode } from 'react';
+import type {MouseEventHandler, ReactNode} from 'react';
 
 interface SwitchProps {
   active: boolean;
@@ -8,7 +8,7 @@ interface SwitchProps {
   onClick: MouseEventHandler<HTMLInputElement>;
 }
 
-const Switch: FC<SwitchProps> = ({ active, children, onClick }) => {
+export default function Switch({active, children, onClick}: SwitchProps) {
   return <div className={'switch-wrapper'}>
     {children}
     <label className={'Switch'}>
@@ -16,6 +16,4 @@ const Switch: FC<SwitchProps> = ({ active, children, onClick }) => {
       <span className={'slider'}/>
     </label>
   </div>;
-};
-
-export default Switch;
+}

@@ -1,14 +1,14 @@
-import type { Verifiable } from '@model/common';
+import type {Verifiable} from '@model/common';
 
-import { routeAnimations } from '@utils/routeInfoData';
-import { verifyPointName } from '@utils/utils';
+import {routeAnimations} from '@utils/routeInfoData';
+import {verifyPointName} from '@utils/utils';
 
 interface RouteConstructorParams {
   animation: string;
   name: string;
 }
 
-class Route implements Verifiable {
+export default class Route implements Verifiable {
   public animation;
   public name;
 
@@ -17,7 +17,7 @@ class Route implements Verifiable {
     this.animation = param?.animation ?? routeAnimations[1].name;
   }
 
-  public equals = (another: Verifiable): boolean => {
+  public equals(another: Verifiable): boolean {
     if (!(another instanceof Route)) {
       return false;
     }
@@ -25,20 +25,20 @@ class Route implements Verifiable {
     return this.name === another.name && this.animation === another.animation;
   };
 
-  public isValid = () => {
+  public isValid() {
     return (
-      this.name.length === 9 &&
-      this.name.charAt(0) === 'R' &&
-      verifyPointName(this.name.substring(1, 5)) &&
-      verifyPointName(this.name.substring(5))
+        this.name.length === 9 &&
+        this.name.charAt(0) === 'R' &&
+        verifyPointName(this.name.substring(1, 5)) &&
+        verifyPointName(this.name.substring(5))
     );
   };
 
   /**
    * Converts this route to its raw byte representation.
-   * @returns the route in its raw byte representation
+   * @return the route in its raw byte representation
    */
-  public toNumberArray = () => {
+  public toNumberArray() {
     const arr: number[] = [];
     for (let i = 0; i < this.name.length; i++) {
       arr.push(this.name.charCodeAt(i));
@@ -56,6 +56,8 @@ class Route implements Verifiable {
 
     return arr;
   };
-}
 
-export default Route;
+  public toString() {
+    return this.name;
+  };
+}

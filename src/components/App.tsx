@@ -1,35 +1,12 @@
 import '@components/App.css';
+import ViewRouter from '@components/router/ViewRouter.tsx';
+import BaseProvider from '@context/base/BaseProvider.tsx';
+import SnackbarProvider from '@context/snackbar/SnackbarProvider.tsx';
 
-import clsx from 'clsx';
-import { type FC } from 'react';
-
-import Homepage from '@components/view/Homepage';
-import PointEditor from '@components/view/PointEditor';
-import RouteEditor from '@components/view/RouteEditor';
-import useBase from '@context/base/useBase.ts';
-
-const App: FC = () => {
-  const { settings, view } = useBase();
-
-  let contentWindow = null;
-  switch (view) {
-    case 'home': {
-      contentWindow = <Homepage/>;
-      break;
-    }
-    case 'point': {
-      contentWindow = <PointEditor/>;
-      break;
-    }
-    case 'route': {
-      contentWindow = <RouteEditor/>;
-      break;
-    }
-  }
-
-  return <main className={clsx({ dark: settings.darkMode })}>
-    {contentWindow}
-  </main>;
-};
-
-export default App;
+export default function App() {
+  return <BaseProvider>
+    <SnackbarProvider>
+      <ViewRouter/>
+    </SnackbarProvider>
+  </BaseProvider>;
+}

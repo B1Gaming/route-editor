@@ -40,7 +40,7 @@ export const routeAnimations: RouteAnimation[] = animCSV.map((anim) => {
   return {
     name,
     originalName,
-    rawBytes: new Uint8Array(rawBytes.split('_').map((byte) => parseInt(byte)))
+    rawBytes: new Uint8Array(rawBytes.split('_').map((byte) => parseInt(byte))),
   };
 });
 
@@ -77,5 +77,5 @@ export const allFlags: FlagDef = {
   stop: 'Stops player',
   switch: 'Red Switch',
   tilt: 'Tilts camera',
-  ura: 'Secret Exit related'
+  ura: 'Secret Exit related',
 };

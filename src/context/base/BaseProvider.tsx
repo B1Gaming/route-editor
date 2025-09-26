@@ -1,15 +1,14 @@
-import { type FC, useState } from 'react';
+import {useState} from 'react';
 
-import type { GenericProviderProps, Settings, Views } from '@model/common';
+import type {GenericProviderProps, Settings, Views} from '@model/common';
 
-import { BaseContext } from '@context/base/BaseContext.tsx';
+import {BaseContext} from '@context/base/BaseContext.tsx';
 import Point from '@entities/Point.ts';
 import Route from '@entities/Route.ts';
 
-
-const BaseProvider: FC<GenericProviderProps> = ({ children }) => {
+export default function BaseProvider({children}: GenericProviderProps) {
   const defaultSettings: Settings = {
-    darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
   };
   const cookieArray = document.cookie.split('settings=');
   if (cookieArray.length === 2) {
@@ -32,37 +31,35 @@ const BaseProvider: FC<GenericProviderProps> = ({ children }) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
 
-  const reset = () => {
+  function reset() {
     setCsvString('');
     setCurrentlyEditing(-1);
     setPoints([]);
     setRoutes([]);
     setView('home');
-  };
+  }
 
   return (
-    <BaseContext.Provider
-      value={{
-        csvString,
-        currentlyEditing,
-        points,
-        reset,
-        routes,
-        setCsvString,
-        setCurrentlyEditing,
-        setPoints,
-        setRoutes,
-        setSettings,
-        setSettingsOpen,
-        settings,
-        settingsOpen,
-        setView,
-        view
-      }}
-    >
-      {children}
-    </BaseContext.Provider>
+      <BaseContext.Provider
+          value={{
+            csvString,
+            currentlyEditing,
+            points,
+            reset,
+            routes,
+            setCsvString,
+            setCurrentlyEditing,
+            setPoints,
+            setRoutes,
+            setSettings,
+            setSettingsOpen,
+            settings,
+            settingsOpen,
+            setView,
+            view,
+          }}
+      >
+        {children}
+      </BaseContext.Provider>
   );
-};
-
-export default BaseProvider;
+}
